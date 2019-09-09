@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>    
+            <h3>Basic</h3>
+            <p:inputText />
+
+           <h3>Floating Label</h3>
+           <span class="ui-float-label">
+               <p:inputText id="float-input"  />
+               <p:outputLabel for="@previous" value="Username" />
+           </span> 
+           
+            <h3 style="margin-top: 0">Basic</h3>
+             <h:panelGrid columns="1" style="margin-bottom: 10px">
+                 <p:inputText id="txt1"  />
+                 <p:slider for="txt1" />
+             </h:panelGrid>          
+            
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <h:outputLabel for="console" value="Basic:" />
+            <h:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+            </h:selectOneMenu>  
+        </h:panelGrid>    
+           
+        </h:form>   
+        
+<h:form>   
+    <p:growl id="growl" showDetail="true" sticky="true" />  
+       
+    <p:panel header="Growl">  
+        <h:panelGrid columns="2" cellpadding="5">  
+            <p:outputLabel for="msg" value="Message:" />   
+            <p:inputText id="msg" value="#{growlView.message}" required="true" />  
+        </h:panelGrid>  
+   
+        <p:commandButton value="Save" action="#{growlView.saveMessage}" update="@form" />
+    </p:panel>     
+</h:form>        
+        
+        
+    </h:body>
+</html>
+

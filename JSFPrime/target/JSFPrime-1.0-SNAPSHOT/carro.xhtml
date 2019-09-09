@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <p:dataTable var="car" value="#{carroBean.listaCarro}" id="tabla"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                
+                <p:column filterBy="#{car.placa}"  filterMatchMode="contains" headerText="Placa" exportable="false">
+                    <h:outputText value="#{car.placa}" />
+                </p:column>
+
+                <p:column headerText="Color" filterBy="#{car.color}"  filterMatchMode="exact">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+
+                <p:column headerText="Modelo">
+                    <h:outputText value="#{car.modelo}" />
+                </p:column>
+
+                <p:column headerText="Marca">
+                    <h:outputText value="#{car.marca}" />
+                </p:column>
+            </p:dataTable>            
+
+            
+            <h:commandLink>
+                 <p:graphicImage value="/demo/images/excel.png" />
+                 <p:dataExporter type="pdf" target="tabla" fileName="carros" />
+             </h:commandLink>            
+            
+            <p:separator />
+
+            <p:commandButton value="Agregar" actionListener="#{carroBean.agregar}" update="tabla"/>
+
+        </h:form>
+
+
+    </h:body>
+</html>
+
